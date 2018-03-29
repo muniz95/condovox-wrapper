@@ -1,7 +1,6 @@
 import request from 'request-promise'
 import fetch from './util/fetch'
-
-const URL = 'https://www.spaziochampville.com.br'
+import { URL } from './constants'
 
 export const assembleias = (user, pass) => {
     const options = {

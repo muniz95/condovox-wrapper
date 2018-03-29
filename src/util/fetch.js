@@ -1,6 +1,5 @@
 import request from 'request-promise'
-
-const URL = 'https://www.spaziochampville.com.br'
+import { URL } from '../constants'
 
 export const login = async (acesso_login, acesso_senha) => {
   const options = {
