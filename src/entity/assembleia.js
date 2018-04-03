@@ -2,7 +2,6 @@ import domify from '../util/domify'
 
 class Assembleia {
     constructor(htmlResponse) {
-        console.log(htmlResponse)
         this.document = domify.getDocument(htmlResponse)
     }
     

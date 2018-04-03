@@ -3,13 +3,20 @@ import fetch from './util/fetch'
 import Assembleia from './entity/assembleia'
 import { URL } from './constants'
 
-export const assembleias = (user, pass) => {
-    const options = {
-        uri: `${URL}/assembleias`,
-        resolveWithFullResponse: true
+export class Condovox {
+    async login(user, pass) {
+        this.req = await fetch.login(user, pass)
+        return this
     }
-    return fetch.login(user, pass)
-        // .then(req => new Assembleia(req.get(options)))
-        .then(req => req.get(options))
-        .catch(err => err)
+    
+    assembleias(instance) {
+        const options = {
+            uri: `${URL}/assembleias`,
+            resolveWithFullResponse: true
+        }
+        return instance.req.get(options)
+            .then(res => new Assembleia(res))
+            // .then(req => req.get(options))
+            .catch(err => err)
+    }
 }
