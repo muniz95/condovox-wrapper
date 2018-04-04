@@ -1,6 +1,6 @@
 import request from 'request-promise'
 import fetch from './util/fetch'
-import Assembleia from './entity/assembleia'
+import assembleia from './parser/assembleia'
 import { URL } from './constants'
 
 export class Condovox {
@@ -9,14 +9,13 @@ export class Condovox {
         return this
     }
     
-    assembleias(instance) {
+    listAssembleias(instance) {
         const options = {
             uri: `${URL}/assembleias`,
             resolveWithFullResponse: true
         }
         return instance.req.get(options)
-            .then(res => new Assembleia(res))
-            // .then(req => req.get(options))
+            .then(assembleia.listAll)
             .catch(err => err)
     }
 }
