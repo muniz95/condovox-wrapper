@@ -4,9 +4,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch current file w/ ts-node",
+      "name": "Launching main file...",
       "protocol": "inspector",
-      "args": ["${relativeFile}"],
+      "args": ["${workspaceRoot}/example/index.ts"],
       "cwd": "${workspaceRoot}",
       "runtimeArgs": ["-r", "ts-node/register"],
       "internalConsoleOptions": "openOnSessionStart"

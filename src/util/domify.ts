@@ -1,6 +1,7 @@
 import { JSDOM } from "jsdom";
 
-export const getDocument = (htmlResponse: any) => new JSDOM(htmlResponse.body).window.document;
+export const getDocument = (htmlResponse: string): Document =>
+    new JSDOM(htmlResponse).window.document;
 
 export default {
     getDocument,

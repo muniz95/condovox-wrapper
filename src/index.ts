@@ -1,4 +1,5 @@
 import { URL } from "./constants";
+import { listAll } from "./parser/assembleia";
 import fetch from "./util/fetch";
 
 export class Condovox {
@@ -23,7 +24,8 @@ export class Condovox {
             uri: `${URL}/assembleias`,
         };
 
-        return await this.req.get(options);
+        const {body: page} = await this.req.get(options);
+        return listAll(page);
     }
 }
 
