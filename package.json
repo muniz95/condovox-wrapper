@@ -6,31 +6,34 @@
   "scripts": {
     "start": "npm run build && node example/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist/ && babel ./src --out-dir dist/ --copy-files",
+    "tsc": "tsc",
+    "build": "rimraf dist/ && tsc",
     "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/muniz95/condovox-js.git"
+    "url": "git+https://github.com/muniz95/condovox-api.git"
   },
   "author": "Rodrigo Muniz <rodrigo.temiski1995@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/muniz95/condovox-js/issues"
+    "url": "https://github.com/muniz95/condovox-api/issues"
   },
-  "homepage": "https://github.com/muniz95/condovox-js#readme",
+  "homepage": "https://github.com/muniz95/condovox-api#readme",
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
+    "@types/jsdom": "^11.0.4",
+    "@types/node": "^10.1.2",
+    "@types/request-promise": "^4.1.41",
     "dotenv": "^5.0.1",
-    "eslint": "^4.19.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
   },
   "dependencies": {
     "browser-jsonp": "^1.1.5",
     "jsdom": "^11.7.0",
     "request": "^2.85.0",
     "request-promise": "^4.2.2"
-  }
+  },
+  "types": "dist/index.d.ts"
 }
