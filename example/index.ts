@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Condovox } from "../dist";
+import { Condovox } from "../src";
 
 (async () => {
     config();
