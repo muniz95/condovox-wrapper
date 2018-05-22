@@ -16,5 +16,5 @@ import { Condovox } from "../src";
     const assembleias = await condovox.listAssembleias();
 
     // tslint:disable-next-line:no-console
-    console.log(assembleias);
+    console.debug(assembleias.map((a) => a.asJSON()));
 })();

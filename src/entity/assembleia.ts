@@ -1,23 +1,38 @@
-import domify from "../util/domify";
+export interface IParameters {
+    url?: string;
+    title?: string;
+    date?: Date;
+    confirmed?: boolean;
+}
 
 class Assembleia {
-    private document: any;
+    public url?: string;
+    public title?: string;
+    public date?: Date;
+    public confirmed?: boolean;
 
-    constructor(htmlResponse: any) {
-        this.document = domify.getDocument(htmlResponse);
+    constructor({
+        url,
+        title,
+        date,
+        confirmed,
+    }: IParameters) {
+        this.url = url;
+        this.title = title;
+        this.date = date;
+        this.confirmed = confirmed;
     }
 
-    public listAssembleias() {
-        const assembleias: Array<{ title: any; date: any; confirmed: any; }> = [];
-        const nodes: Element[] = Array.from(this.document.getElementsByTagName("tbody"));
-        nodes.forEach((node) => {
-            assembleias.push({
-                confirmed: node.children[0].children[2].textContent,
-                date: node.children[0].children[1].textContent,
-                title: node.children[0].children[0].textContent,
-            });
+    /**
+     * asJSON
+     */
+    public asJSON() {
+        return JSON.stringify({
+            confirmed: this.confirmed,
+            date: this.date,
+            title: this.title,
+            url: this.url,
         });
-        return assembleias;
     }
 }
 

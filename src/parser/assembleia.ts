@@ -1,21 +1,22 @@
+import Assembleia from "../entity/assembleia";
+import { parseDate } from "../util/date";
 import domify from "../util/domify";
 
-export const listAll = (response: string) => {
-    const assembleias: Array<{ url: any; title: any; date: any; confirmed: any; }> = [];
+export const parseAll = (response: string) => {
     const dom = domify.getDocument(response);
     const nodes: Element[] = Array.from(dom.getElementsByTagName("tbody"));
 
-    nodes.forEach((node) => {
-        assembleias.push({
-            confirmed: node.children[0].children[2].textContent,
-            date: node.children[0].children[1].textContent,
-            title: node.children[0].children[0].textContent,
-            url: node.children[0].children[0].children[0].getAttribute("href"),
-        });
-    });
-    return assembleias;
+    return nodes.map((node) => parse(node)) as Assembleia[];
 };
 
+const parse = (node: Element) =>
+    new Assembleia({
+        confirmed: node.children[0].children[2].textContent === "Confirmed",
+        date: parseDate(node.children[0].children[1].textContent as string),
+        title: node.children[0].children[0].textContent as string,
+        url: (node.children[0].children[0].children[0].getAttribute("href") as string),
+    });
+
 export default {
-    listAll,
+    parseAll,
 };

@@ -1,5 +1,8 @@
 import { URL } from "./constants";
-import { listAll } from "./parser/assembleia";
+import Administradora from "./entity/administradora";
+import Assembleia from "./entity/assembleia";
+import parserAdministradora from "./parser/administradora";
+import parserAssembleia from "./parser/assembleia";
 import fetch from "./util/fetch";
 
 export class Condovox {
@@ -18,14 +21,24 @@ export class Condovox {
         return this;
     }
 
-    public async listAssembleias() {
+    public async listAssembleias(): Promise<Assembleia[]> {
         const options = {
             resolveWithFullResponse: true,
             uri: `${URL}/assembleias`,
         };
 
         const {body: page} = await this.req.get(options);
-        return listAll(page);
+        return parserAssembleia.parseAll(page);
+    }
+
+    public async listAdministradoras(): Promise<Administradora[]> {
+        const options = {
+            resolveWithFullResponse: true,
+            uri: `${URL}/administradora`,
+        };
+
+        const {body: page} = await this.req.get(options);
+        return parserAdministradora.parseAll(page);
     }
 }
 
