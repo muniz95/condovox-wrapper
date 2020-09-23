@@ -2,13 +2,15 @@ import { RequestAPI } from "request";
 import request from "request-promise";
 import { URL } from "../constants";
 
-export const login =
-  async (acessoLogin: string, acessoSenha: string): Promise<RequestAPI<any, any, any>> => {
+export const login = async (
+  acessoLogin: string,
+  acessoSenha: string
+): Promise<RequestAPI<any, any, any>> => {
   const options = {
     form: {
-        acesso_login: acessoLogin,
-        acesso_senha: acessoSenha,
-        acesso_submit: "",
+      acesso_login: acessoLogin,
+      acesso_senha: acessoSenha,
+      acesso_submit: "",
     },
     resolveWithFullResponse: true,
     simple: false,
@@ -23,5 +25,5 @@ export const login =
 };
 
 export default {
-    login,
+  login,
 };

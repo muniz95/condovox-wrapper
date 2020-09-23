@@ -4,4 +4,4 @@ declare module "*.json" {
 }
 declare module "dotenv";
 declare module "jsdom";
-declare module 'request-promise';
+declare module "request-promise";

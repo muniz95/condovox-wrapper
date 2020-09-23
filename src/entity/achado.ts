@@ -2,7 +2,7 @@ import Usuario from "./usuario";
 
 interface IParameters {
     id?: number;
-    achadoPor?: Usuario;
+    foundBy?: Usuario;
     data?: Date;
     foto?: string;
     observacoes?: string;
@@ -12,7 +12,7 @@ interface IParameters {
 
 class Achado {
     public id?: number;
-    public achadoPor?: Usuario;
+    public foundBy?: Usuario;
     public data?: Date;
     public foto?: string;
     public observacoes?: string;
@@ -21,7 +21,7 @@ class Achado {
 
     constructor({
         id,
-        achadoPor,
+        foundBy,
         data,
         foto,
         observacoes,
@@ -29,7 +29,7 @@ class Achado {
         titulo,
     }: IParameters) {
         this.id = id;
-        this.achadoPor = achadoPor;
+        this.foundBy = foundBy;
         this.data = data;
         this.foto = foto;
         this.observacoes = observacoes;
