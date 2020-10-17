@@ -1,4 +1,4 @@
-import { Condovox } from "../src";
+import Condovox from "../src";
 
 describe("login", () => {
   it('deve dar erro ao não informar usuário e senha', async () => {

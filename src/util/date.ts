@@ -1,6 +1,6 @@
 export const parseDate = (date: string): Date => {
-  const splitDate = date
+  const [day, month, year] = date
     .split("/")
     .map((item: string) => Number.parseInt(item));
-  return new Date(splitDate[2], splitDate[1], splitDate[0]);
+  return new Date(year, month, day);
 };

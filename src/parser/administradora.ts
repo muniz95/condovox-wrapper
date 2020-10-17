@@ -1,11 +1,11 @@
 import Administradora from "../entity/administradora";
 import domify from "../util/domify";
 
-export const parseAll = (response: string) => {
+export const parseAll = (response: string): Administradora[] => {
   const dom = domify.getDocument(response);
   const nodes: Element[] = Array.from(dom.getElementsByTagName("tbody"));
 
-  return nodes.map((node) => parse(node)) as Administradora[];
+  return nodes.map(parse);
 };
 
 const parse = (node: Element): Administradora =>

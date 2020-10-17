@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-import { Condovox } from "../src";
+import Condovox from "../src";
 
 (async () => {
   config();
@@ -13,8 +13,9 @@ import { Condovox } from "../src";
   }
   const condovox = new Condovox(user, pass);
   await condovox.login();
-  const assembleias = await condovox.listAssembleias();
+  // const assembleias = await condovox.listAssembleias();
 
-  // tslint:disable-next-line:no-console
-  console.debug(assembleias.map((a) => a.asJSON()));
+  // // tslint:disable-next-line:no-console
+  // console.debug(assembleias.map((a) => a.asJSON()));
+  condovox.getNotices();
 })();

@@ -3,11 +3,11 @@ import Usuario from "../entity/usuario";
 import { parseDate } from "../util/date";
 import domify from "../util/domify";
 
-export const parseAll = (response: string) => {
+export const parseAll = (response: string): Achado[] => {
   const dom = domify.getDocument(response);
   const nodes: Element[] = Array.from(dom.getElementsByTagName("tbody"));
 
-  return nodes.map((node) => parse(node)) as Achado[];
+  return nodes.map(parse);
 };
 
 const parse = (node: Element) =>

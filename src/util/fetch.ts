@@ -7,7 +7,7 @@ const login = async (login: string, password: string): Promise<SuperAgentStatic>
   await agent
     .post(`${URL}/acesso/login`)
     .withCredentials()
-    .set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9')
+    .set('Accept', 'text/html')
     .set('Content-Type', 'application/x-www-form-urlencoded')
     .send({
       acesso_login: login,
